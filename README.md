@@ -9,7 +9,11 @@
 
 So with no further code changes necessary, simply run the command
 
+```diff
+
 mvn spring-boot:build-image
+
+```
 
 On Completion you will see
 
