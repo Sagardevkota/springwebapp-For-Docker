@@ -21,8 +21,10 @@ Successsfully built image 'docker.io/library/springwebappdemo:0.0.1-SNAPSHOT
 
 then simply run
 
+```diff
 docker run --tty --publish 8090:8090 springwebappdemo:0.0.1-SNAPSHOT
 
+```
 Note:You should have your docker terminal running in background..
 
 
@@ -32,18 +34,24 @@ A benefit is that it does not require Docker to be installed locally* which can 
 
 To build the Docker image, run the command
 
+```diff
 mvn compile com.google.cloud.tools:jib-maven-plugin:2.3.0:dockerBuild
 
+```
 Once built, we can run our new Docker image. docker run -p 9091:8080 -t demo-application:0.0.1-SNAPSHOT
 
 Note:It doesnt require docker to be installed locally but if you have it installed you can see your docker container running by following command
 
-docker ps
 
+```diff
+docker ps
+```
 You can use following command to stop docker container
 
-docker rm -f CONTAINER_ID
 
+```diff
+docker rm -f CONTAINER_ID
+```
 
 # 3. Using the dockerfile-maven-plugin from Spotify
 
@@ -53,6 +61,8 @@ Note:I have included Dockerfile in this repo
 
 we will add some configuration into the pom.xml, specifically repository tag and an argument for the JAR_FILE which you can see we reference in the Dockerfile above
 
+
+```diff
 <plugin>
   <groupId>com.spotify</groupId>
   <artifactId>dockerfile-maven-plugin</artifactId>
@@ -74,9 +84,13 @@ we will add some configuration into the pom.xml, specifically repository tag and
     </buildArgs>
   </configuration>
 </plugin>
+```
 
 Run the standard command mvn package
 
-Once built, we can run our new Docker image. docker run -p 9092:8080 -t demo-application:0.0.1-SNAPSHOT
+Once built, we can run our new Docker image.
+```diff
+docker run -p 9092:8080 -t demo-application:0.0.1-SNAPSHOT
+```
 
 Majority part of article was extracted from source : https://medium.com/swlh/build-a-docker-image-using-maven-and-spring-boot-58147045a400 
